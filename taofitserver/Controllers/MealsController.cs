@@ -22,6 +22,13 @@ namespace taofitserver.Controllers
             return Ok(allMeals);
         }
 
+        [HttpGet("GetAllMealsWithFoods")]
+        public IActionResult GetMealsWithFoods()
+        {
+            var allMeals = _mealsService.GetAllMealsWithFoods();
+            return Ok(allMeals);
+        }
+
         [HttpGet("GetMealById{mealId}")]
         public IActionResult GetMealsById(int mealId)
         {

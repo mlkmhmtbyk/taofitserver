@@ -14,12 +14,25 @@ namespace taofitserver.Services
 
         public List<Meal> GetAllMeals()
         {
-            return _context.Meals.ToList();
+            var _meals = _context.Meals.ToList();
+            return _meals;
+        }
+
+        public List<Meal> GetAllMealsWithFoods()
+        {
+            var _meals = _context.Meals.ToList();
+            foreach (Meal _meal in _meals)
+            {
+                _meal.Foods = _context.Foods.Where(f => f.MealId == _meal.MealId).ToList();
+            }
+            return _meals;
         }
 
         public Meal GetMealById(int mealId)
         {
-            return _context.Meals.Find(mealId);
+            var _meal = _context.Meals.Find(mealId);
+            _meal.Foods = _context.Foods.Where(f => f.MealId == mealId).ToList();
+            return _meal;
         }
 
         public void AddMeal(Meal meal)
@@ -59,6 +72,7 @@ namespace taofitserver.Services
                 _context.SaveChanges();
             }
         }
+        
 
     }
 }

@@ -57,5 +57,18 @@ namespace taofitserver.Services
                 _context.SaveChanges();
             }
         }
+
+        public void AddFoodToMealById(int mealId, Food food)
+        {
+            var _food = new Food()
+            {
+                FoodName = food.FoodName,
+                Amount = food.Amount,
+                Calory = food.Calory,
+                MealId = mealId
+            };
+            _context.Foods.Add(_food);
+            _context.SaveChanges();
+        }
     }
 }

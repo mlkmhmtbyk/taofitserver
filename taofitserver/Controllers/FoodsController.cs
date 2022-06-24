@@ -37,6 +37,13 @@ namespace taofitserver.Controllers
             return Ok();
         }
 
+        [HttpPost("AddFoodToMealById{mealId}")]
+        public IActionResult AddFoodToMealById(int mealId, [FromBody] Food food)
+        {
+            _foodsService.AddFoodToMealById(mealId, food);
+            return Ok();
+        }
+
         [HttpPut("UpdateFoodById{foodId}")]
         public IActionResult UpdateFoodById(int foodId, [FromBody] Food food)
         {
