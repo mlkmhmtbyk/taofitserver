@@ -1,10 +1,11 @@
 ﻿using taofitserver.Data;
+using taofitserver.Data.Models;
 
 namespace taofitserver.Services
 {
     public class FoodsService
     {
-        private DataContext _context;
+        private readonly DataContext _context;
 
         public FoodsService(DataContext context)
         {

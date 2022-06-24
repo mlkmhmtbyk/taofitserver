@@ -15,8 +15,9 @@ builder.Services.AddDbContext<DataContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
-//serviceler buraya
+//All Services goes here
 builder.Services.AddTransient<FoodsService>();
+builder.Services.AddTransient<MealsService>();
 
 
 builder.Services.AddEndpointsApiExplorer();

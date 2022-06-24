@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using taofitserver.Data;
+using taofitserver.Data.Models;
 using taofitserver.Services;
 
 namespace taofitserver.Controllers
@@ -16,7 +16,7 @@ namespace taofitserver.Controllers
         }
 
 
-        [HttpGet("getAllFoods")]
+        [HttpGet("GetAllFoods")]
         public IActionResult GetFoods()
         {
             var allFoods = _foodsService.GetAllFoods();
@@ -24,13 +24,13 @@ namespace taofitserver.Controllers
         }
 
         [HttpGet("GetFoodById{foodId}")]
-        public IActionResult GetFoods(int foodId)
+        public IActionResult GetFoodsById(int foodId)
         {
             var food = _foodsService.GetFoodById(foodId);
             return Ok(food);
         }
 
-        [HttpPost("addFood")]
+        [HttpPost("AddFood")]
         public IActionResult AddFood([FromBody]Food food)
         {
             _foodsService.AddFood(food);
